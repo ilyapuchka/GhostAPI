@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D2D13EC5029C4B09897461BC872538459F9829DB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D632F6AD36E05ADD845ABF93AAEAA7669AAFCC0D" : 0,
+    "D2D13EC5029C4B09897461BC872538459F9829DB" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E0E8E581-2165-42F7-936D-519D66FAEFF4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D632F6AD36E05ADD845ABF93AAEAA7669AAFCC0D" : "NetworkAPI\/",
+    "D2D13EC5029C4B09897461BC872538459F9829DB" : "Ghost\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Ghost",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Ghost.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ilyapuchka\/GhostAPI.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D2D13EC5029C4B09897461BC872538459F9829DB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ilyapuchka\/SwiftNetworking.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D632F6AD36E05ADD845ABF93AAEAA7669AAFCC0D"
+    }
+  ]
+}
