@@ -162,5 +162,20 @@ class PostsTests: GhostAPITests {
         
         waitForExpectationsWithTimeout(5, handler: nil)
     }
+    
+    func testThatItCanUploadImage() {
+        let bundle = NSBundle(forClass: PostsTests.self)
+        let fileURL = bundle.URLForResource("untitled", withExtension: "jpg")!
+        
+        let expectation = expectationWithDescription("Image uploaded")
+        try! self.api.upload(fileURL) { response in
+            guard let _ = response.result else {
+                XCTAssert(false, "Should return image path")
+                return;
+            }
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(5, handler: nil)
+    }
 }
 

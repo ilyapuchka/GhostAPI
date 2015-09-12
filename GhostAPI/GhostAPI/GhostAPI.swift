@@ -56,20 +56,19 @@ extension APIClient: APIClientAccessTokenRefresh {
     }
 }
 
-//MARK: Posts
+//MARK: - Posts
 
 public enum PostsEndpoint: Endpoint {
     
     case GetPosts
-    case GetPost(Post.Id)
     case AddPost
+    case GetPost(Post.Id)
     case UpdatePost(Post.Id)
     case DeletePost(Post.Id)
     
     public var path: String {
         switch self {
-        case .GetPosts: return "posts/"
-        case .AddPost: return "posts/"
+        case .GetPosts, .AddPost: return "posts/"
         case .GetPost(let id): return "posts/\(id)/"
         case .UpdatePost(let id): return "posts/\(id)/"
         case .DeletePost(let id): return "posts/\(id)/"
@@ -154,7 +153,7 @@ extension APIClient {
     }
 }
 
-//MARK: Tags
+//MARK: - Tags
 
 public enum TagsEndpoint: Endpoint {
     case GetTags
@@ -181,9 +180,47 @@ extension APIClient {
     
 }
 
-//MARK: Upload
+//MARK: - Media upload
+
+import ImageIO
+import MobileCoreServices
+
+public enum UploadEndpoint: Endpoint {
+    case Uploads
+    
+    public var path: String {
+        return "uploads/"
+    }
+    
+    public var signed: Bool {
+        return true
+    }
+    
+    public var method: HTTPMethod {
+        return .POST
+    }
+}
 
 extension APIClient {
+    
+    public func upload(url: NSURL, completion: APIResponseOf<String> -> Void) throws -> APIRequestTask {
+        
+        guard let
+            data = NSData(contentsOfURL: url),
+            source = CGImageSourceCreateWithURL(url, nil),
+            type = CGImageSourceGetType(source),
+            mimeType = UTTypeCopyPreferredTagWithClass(type, kUTTagClassMIMEType)?.takeUnretainedValue(),
+            name = url.lastPathComponent else {
+                throw NSError(code: .BadRequest)
+        }
+        
+        let item = MultipartBodyItem(data: data, contentType: MIMEType(mimeType), headers: [HTTPHeader.ContentDisposition("form-data; name=\"uploadimage\"; filename=\"\(name)\"")])
+        
+        let boundary = "ghost"
+        let body = NSData(multipartDataWithItems: [item], boundary: boundary)
+        let apiRequest = APIRequestFor<String>(endpoint: UploadEndpoint.Uploads, baseURL: baseURL, body: body, headers: [HTTPHeader.ContentType(HTTPContentType.multipart(boundary))])
+        return request(apiRequest, completion: completion)
+    }
     
 }
 
