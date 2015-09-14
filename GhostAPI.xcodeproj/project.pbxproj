@@ -168,7 +168,6 @@
 				096789DE1B8141FD00BCC16F /* Frameworks */,
 				096789DF1B8141FD00BCC16F /* Headers */,
 				096789E01B8141FD00BCC16F /* Resources */,
-				09D4FBF31BA74A450048C9BD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -252,23 +251,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		09D4FBF31BA74A450048C9BD /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftNetworking.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		096789DD1B8141FD00BCC16F /* Sources */ = {
