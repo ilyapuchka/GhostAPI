@@ -17,7 +17,7 @@
                BlueprintIdentifier = "096789E11B8141FD00BCC16F"
                BuildableName = "GhostAPI.framework"
                BlueprintName = "GhostAPI"
-               ReferencedContainer = "container:Ghost.xcodeproj">
+               ReferencedContainer = "container:GhostAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "096789EA1B8141FE00BCC16F"
                BuildableName = "GhostAPITests.xctest"
                BlueprintName = "GhostAPITests"
-               ReferencedContainer = "container:Ghost.xcodeproj">
+               ReferencedContainer = "container:GhostAPI.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "096789E11B8141FD00BCC16F"
             BuildableName = "GhostAPI.framework"
             BlueprintName = "GhostAPI"
-            ReferencedContainer = "container:Ghost.xcodeproj">
+            ReferencedContainer = "container:GhostAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -67,7 +67,7 @@
             BlueprintIdentifier = "096789E11B8141FD00BCC16F"
             BuildableName = "GhostAPI.framework"
             BlueprintName = "GhostAPI"
-            ReferencedContainer = "container:Ghost.xcodeproj">
+            ReferencedContainer = "container:GhostAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "096789E11B8141FD00BCC16F"
             BuildableName = "GhostAPI.framework"
             BlueprintName = "GhostAPI"
-            ReferencedContainer = "container:Ghost.xcodeproj">
+            ReferencedContainer = "container:GhostAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

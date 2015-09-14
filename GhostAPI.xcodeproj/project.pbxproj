@@ -15,9 +15,9 @@
 		0970AEE81B93077300115EA1 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970AEE61B93077300115EA1 /* Credentials.swift */; };
 		0970AEE91B93077300115EA1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970AEE71B93077300115EA1 /* Post.swift */; };
 		0970AEEB1B93077F00115EA1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970AEEA1B93077F00115EA1 /* Tag.swift */; };
+		099A54A61BA757AE00A21D18 /* SwiftNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099A54A51BA757A800A21D18 /* SwiftNetworking.framework */; };
+		099A54A71BA757E700A21D18 /* SwiftNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099A54A51BA757A800A21D18 /* SwiftNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09D4FBEE1BA379F30048C9BD /* untitled.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09D4FBED1BA379F30048C9BD /* untitled.jpg */; };
-		09D4FBF21BA74A250048C9BD /* NetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D4FBF11BA74A250048C9BD /* NetworkAPI.framework */; };
-		09D4FBF51BA74A840048C9BD /* NetworkAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09D4FBF11BA74A250048C9BD /* NetworkAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				09D4FBF51BA74A840048C9BD /* NetworkAPI.framework in CopyFiles */,
+				099A54A71BA757E700A21D18 /* SwiftNetworking.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,8 +55,8 @@
 		0970AEE61B93077300115EA1 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		0970AEE71B93077300115EA1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0970AEEA1B93077F00115EA1 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		099A54A51BA757A800A21D18 /* SwiftNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftNetworking.framework; path = Carthage/Build/iOS/SwiftNetworking.framework; sourceTree = "<group>"; };
 		09D4FBED1BA379F30048C9BD /* untitled.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = untitled.jpg; path = ../../../../../Downloads/untitled.jpg; sourceTree = "<group>"; };
-		09D4FBF11BA74A250048C9BD /* NetworkAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkAPI.framework; path = Carthage/Build/iOS/NetworkAPI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09D4FBF21BA74A250048C9BD /* NetworkAPI.framework in Frameworks */,
+				099A54A61BA757AE00A21D18 /* SwiftNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +130,7 @@
 		09F1C9371B80B2C2004E8068 = {
 			isa = PBXGroup;
 			children = (
-				09D4FBF11BA74A250048C9BD /* NetworkAPI.framework */,
+				099A54A51BA757A800A21D18 /* SwiftNetworking.framework */,
 				096789E31B8141FE00BCC16F /* GhostAPI */,
 				096789EF1B8141FE00BCC16F /* GhostAPITests */,
 				09F1C9421B80B2C2004E8068 /* Products */,
@@ -217,7 +217,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 09F1C93B1B80B2C2004E8068 /* Build configuration list for PBXProject "Ghost" */;
+			buildConfigurationList = 09F1C93B1B80B2C2004E8068 /* Build configuration list for PBXProject "GhostAPI" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -260,7 +260,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/NetworkAPI.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftNetworking.framework",
 			);
 			outputPaths = (
 			);
@@ -342,7 +342,7 @@
 				INFOPLIST_FILE = GhostAPITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ilya.puchka.GhostAPITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GhostAPITests;
 			};
 			name = Debug;
 		};
@@ -352,7 +352,7 @@
 				INFOPLIST_FILE = GhostAPITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ilya.puchka.GhostAPITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GhostAPITests;
 			};
 			name = Release;
 		};
@@ -379,6 +379,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -427,6 +428,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -466,7 +468,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		09F1C93B1B80B2C2004E8068 /* Build configuration list for PBXProject "Ghost" */ = {
+		09F1C93B1B80B2C2004E8068 /* Build configuration list for PBXProject "GhostAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				09F1C9531B80B2C2004E8068 /* Debug */,

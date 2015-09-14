@@ -1,6 +1,6 @@
 //
 //  PostsTests.swift
-//  Ghost
+//  GhostAPI
 //
 //  Created by Ilya Puchka on 11.09.15.
 //  Copyright © 2015 Ilya Puchka. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 import GhostAPI
-import NetworkAPI
+import SwiftNetworking
 
 class PostsTests: GhostAPITests {
 

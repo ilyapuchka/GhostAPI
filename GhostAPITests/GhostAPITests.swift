@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import GhostAPI
-import NetworkAPI
+import SwiftNetworking
 
 var accessToken: AccessToken!
 let TokenSetNotificationName = "TokenSetNotification"

@@ -1,13 +1,13 @@
 //
 //  GhostAPI.swift
-//  Ghost
+//  GhostAPI
 //
 //  Created by Ilya Puchka on 16.08.15.
 //  Copyright © 2015 Ilya Puchka. All rights reserved.
 //
 
 import Foundation
-import NetworkAPI
+import SwiftNetworking
 
 //MARK: Auth
 
