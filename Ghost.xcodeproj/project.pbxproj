@@ -16,6 +16,8 @@
 		0970AEE91B93077300115EA1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970AEE71B93077300115EA1 /* Post.swift */; };
 		0970AEEB1B93077F00115EA1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970AEEA1B93077F00115EA1 /* Tag.swift */; };
 		09D4FBEE1BA379F30048C9BD /* untitled.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09D4FBED1BA379F30048C9BD /* untitled.jpg */; };
+		09D4FBF21BA74A250048C9BD /* NetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D4FBF11BA74A250048C9BD /* NetworkAPI.framework */; };
+		09D4FBF51BA74A840048C9BD /* NetworkAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09D4FBF11BA74A250048C9BD /* NetworkAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,19 @@
 			remoteInfo = GhostAPI;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		09D4FBF41BA74A810048C9BD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09D4FBF51BA74A840048C9BD /* NetworkAPI.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		093D10751BA35868007E3603 /* PostsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTests.swift; sourceTree = "<group>"; };
@@ -41,6 +56,7 @@
 		0970AEE71B93077300115EA1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0970AEEA1B93077F00115EA1 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		09D4FBED1BA379F30048C9BD /* untitled.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = untitled.jpg; path = ../../../../../Downloads/untitled.jpg; sourceTree = "<group>"; };
+		09D4FBF11BA74A250048C9BD /* NetworkAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkAPI.framework; path = Carthage/Build/iOS/NetworkAPI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09D4FBF21BA74A250048C9BD /* NetworkAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +130,7 @@
 		09F1C9371B80B2C2004E8068 = {
 			isa = PBXGroup;
 			children = (
+				09D4FBF11BA74A250048C9BD /* NetworkAPI.framework */,
 				096789E31B8141FE00BCC16F /* GhostAPI */,
 				096789EF1B8141FE00BCC16F /* GhostAPITests */,
 				09F1C9421B80B2C2004E8068 /* Products */,
@@ -150,6 +168,7 @@
 				096789DE1B8141FD00BCC16F /* Frameworks */,
 				096789DF1B8141FD00BCC16F /* Headers */,
 				096789E01B8141FD00BCC16F /* Resources */,
+				09D4FBF31BA74A450048C9BD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -167,6 +186,7 @@
 				096789E71B8141FE00BCC16F /* Sources */,
 				096789E81B8141FE00BCC16F /* Frameworks */,
 				096789E91B8141FE00BCC16F /* Resources */,
+				09D4FBF41BA74A810048C9BD /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -190,6 +210,7 @@
 				TargetAttributes = {
 					096789E11B8141FD00BCC16F = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 87BXKFRW6K;
 					};
 					096789EA1B8141FE00BCC16F = {
 						CreatedOnToolsVersion = 7.0;
@@ -232,6 +253,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09D4FBF31BA74A450048C9BD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/NetworkAPI.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		096789DD1B8141FD00BCC16F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -267,6 +305,7 @@
 		096789F31B8141FE00BCC16F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -283,6 +322,7 @@
 		096789F41B8141FE00BCC16F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

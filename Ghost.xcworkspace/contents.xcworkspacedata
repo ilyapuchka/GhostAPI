@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../NetworkAPI/NetworkAPI.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "container:Ghost.xcodeproj">
    </FileRef>
 </Workspace>
