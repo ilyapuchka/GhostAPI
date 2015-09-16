@@ -9,6 +9,14 @@
 import Foundation
 import SwiftNetworking
 
+public let GhostAPIPath = "/ghost/api/v0.1/"
+
+extension APIClient {
+    public convenience init(host: NSURL) {
+        self.init(baseURL: NSURL(string: GhostAPIPath, relativeToURL: host)!)
+    }
+}
+
 //MARK: Auth
 
 public enum AuthEndpoint: Endpoint {
