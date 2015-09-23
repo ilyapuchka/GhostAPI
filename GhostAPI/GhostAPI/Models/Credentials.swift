@@ -17,7 +17,7 @@ extension String {
             for pair in queryPairs {
                 if let range = pair.rangeOfString("=") {
                     let key = pair.substringToIndex(range.startIndex)
-                    let value = pair.substringFromIndex(advance(range.startIndex, 1))
+                    let value = pair.substringFromIndex(range.startIndex.advancedBy(1))
                     queryDict[key] = value
                 }
             }
