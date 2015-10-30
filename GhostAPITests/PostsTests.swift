@@ -27,10 +27,13 @@ class PostsTests: GhostAPITests {
         self.api.posts { response -> Void in
             expectation.fulfill()
             guard let
-                posts = response.result where
+                posts = response.result,
+                pagination = posts.metadata
+            where
                 posts.items.count > 0 &&
-                posts.page == 1 &&
-                posts.limit == 15 else {
+                pagination.page == 1 &&
+                pagination.limit == 15
+            else {
                 XCTAssert(false, "Should return posts")
                 return
             }
@@ -43,7 +46,7 @@ class PostsTests: GhostAPITests {
         var posts: Posts!
         let expectation = expectationWithDescription("Post added")
         XCTAssertNotThrows { () -> () in
-            try api.addPost(post) { response -> Void in
+            try self.api.addPost(post) { response -> Void in
                 XCTAssertResponseError(response)
                 posts = response.result
                 expectation.fulfill()
@@ -100,7 +103,7 @@ class PostsTests: GhostAPITests {
         updatedPost.title = "Updated \(updatedPost.title)"
         
         XCTAssertNotThrows { () -> () in
-            try api.updatePost(updatedPost) { response -> Void in
+            try self.api.updatePost(updatedPost) { response -> Void in
                 XCTAssertResponseError(response)
                 updatedPosts = response.result
                 postUpdated.fulfill()
@@ -125,7 +128,7 @@ class PostsTests: GhostAPITests {
 
     func testThatItPaginatesPosts() {
         let expectation = expectationWithDescription("Fetched posts")
-        var posts: PaginationOf<Post>!
+        var posts: PostsPagination!
         self.api.posts { response -> Void in
             posts = response.result
             expectation.fulfill()
@@ -134,14 +137,18 @@ class PostsTests: GhostAPITests {
         waitForExpectationsWithTimeout(5, handler: nil)
         
         let nextPageFetched = expectationWithDescription("Next page fetched")
-        let nextPage = PaginationOf<Post>(page: 2, limit: 15)
+        let nextPage = PostsPagination(page: 2, limit: 15)
+        let nextPagePagination = nextPage.metadata!
         self.api.posts(PostsRequestOptions(pagination: nextPage)) {response in
             nextPageFetched.fulfill()
             guard let
-                nextPosts = response.result where
-                nextPosts.page == nextPage.page &&
-                nextPosts.limit == nextPage.limit &&
-                nextPosts.total == posts.total else {
+                nextPosts = response.result,
+                pagination = nextPosts.metadata
+            where
+                pagination.page == nextPagePagination.page &&
+                pagination.limit == nextPagePagination.limit &&
+                pagination.total == posts.metadata!.total
+            else {
                     XCTAssert(false)
                     return
             }
@@ -152,9 +159,9 @@ class PostsTests: GhostAPITests {
     
     func testThatItCanGetTags() {
         let expectation = expectationWithDescription("Fetched tags")
-        self.api.tags{ response -> Void in
+        self.api.tags { response -> Void in
             expectation.fulfill()
-            guard let tags = response.result where tags.value.count > 0 else {
+            guard let tags = response.result?.items where tags.count > 0 else {
                 XCTAssert(false, "Should return tags")
                 return
             }

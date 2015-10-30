@@ -9,7 +9,7 @@
 import Foundation
 import SwiftNetworking
 
-public struct Tag: JSONArrayConvertible {
+public struct Tag: JSONConvertible {
     
     public typealias Id = Int
     private(set) public var id: Tag.Id!
@@ -17,17 +17,17 @@ public struct Tag: JSONArrayConvertible {
     public let name: String
     public let slug: String!
     
-    public init(name: String) {
+    init(id: Tag.Id? = nil, uuid: NSUUID? = nil, name: String, slug: String? = nil) {
+        self.id = id
+        self.uuid = uuid
         self.name = name
-        self.slug = nil
-        self.id = nil
-        self.uuid = nil
+        self.slug = slug
     }
     
-    public static let jsonArrayRootKey = "tags"
+    public init(name: String) {
+        self.init(id: nil, uuid: nil, name: name, slug: nil)
+    }
 }
-
-public typealias Tags = JSONArrayOf<Tag>
 
 //MARK: - JSONDecodable
 

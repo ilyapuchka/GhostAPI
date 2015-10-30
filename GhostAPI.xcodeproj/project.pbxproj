@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		093D10761BA35868007E3603 /* PostsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D10751BA35868007E3603 /* PostsTests.swift */; };
+		095DA6791BE41F27009021F4 /* SwiftNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095DA6781BE41F27009021F4 /* SwiftNetworking.framework */; };
+		095DA67A1BE41F46009021F4 /* SwiftNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 095DA6781BE41F27009021F4 /* SwiftNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		096040EC1BE15F2400E527DC /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096040EB1BE15F2400E527DC /* Pagination.swift */; };
 		096789E51B8141FE00BCC16F /* GhostAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 096789E41B8141FE00BCC16F /* GhostAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		096789EC1B8141FE00BCC16F /* GhostAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096789E21B8141FD00BCC16F /* GhostAPI.framework */; };
 		096789F11B8141FE00BCC16F /* GhostAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096789F01B8141FE00BCC16F /* GhostAPITests.swift */; };
@@ -15,8 +18,6 @@
 		0970AEE81B93077300115EA1 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970AEE61B93077300115EA1 /* Credentials.swift */; };
 		0970AEE91B93077300115EA1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970AEE71B93077300115EA1 /* Post.swift */; };
 		0970AEEB1B93077F00115EA1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970AEEA1B93077F00115EA1 /* Tag.swift */; };
-		099A54A61BA757AE00A21D18 /* SwiftNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099A54A51BA757A800A21D18 /* SwiftNetworking.framework */; };
-		099A54A71BA757E700A21D18 /* SwiftNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099A54A51BA757A800A21D18 /* SwiftNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		099A54A91BA7597900A21D18 /* untitled.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 099A54A81BA7597900A21D18 /* untitled.jpg */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				099A54A71BA757E700A21D18 /* SwiftNetworking.framework in CopyFiles */,
+				095DA67A1BE41F46009021F4 /* SwiftNetworking.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		093D10751BA35868007E3603 /* PostsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTests.swift; sourceTree = "<group>"; };
+		095DA6781BE41F27009021F4 /* SwiftNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftNetworking.framework; path = Carthage/Build/iOS/SwiftNetworking.framework; sourceTree = "<group>"; };
+		096040EB1BE15F2400E527DC /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		096789E21B8141FD00BCC16F /* GhostAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GhostAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		096789E41B8141FE00BCC16F /* GhostAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GhostAPI.h; sourceTree = "<group>"; };
 		096789E61B8141FE00BCC16F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,7 +58,6 @@
 		0970AEE61B93077300115EA1 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		0970AEE71B93077300115EA1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0970AEEA1B93077F00115EA1 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		099A54A51BA757A800A21D18 /* SwiftNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftNetworking.framework; path = Carthage/Build/iOS/SwiftNetworking.framework; sourceTree = "<group>"; };
 		099A54A81BA7597900A21D18 /* untitled.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = untitled.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				099A54A61BA757AE00A21D18 /* SwiftNetworking.framework in Frameworks */,
+				095DA6791BE41F27009021F4 /* SwiftNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +125,7 @@
 				0970AEE61B93077300115EA1 /* Credentials.swift */,
 				0970AEE71B93077300115EA1 /* Post.swift */,
 				0970AEEA1B93077F00115EA1 /* Tag.swift */,
+				096040EB1BE15F2400E527DC /* Pagination.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,7 +133,7 @@
 		09F1C9371B80B2C2004E8068 = {
 			isa = PBXGroup;
 			children = (
-				099A54A51BA757A800A21D18 /* SwiftNetworking.framework */,
+				095DA6781BE41F27009021F4 /* SwiftNetworking.framework */,
 				096789E31B8141FE00BCC16F /* GhostAPI */,
 				096789EF1B8141FE00BCC16F /* GhostAPITests */,
 				09F1C9421B80B2C2004E8068 /* Products */,
@@ -259,6 +262,7 @@
 			files = (
 				0970AEEB1B93077F00115EA1 /* Tag.swift in Sources */,
 				0970AEE91B93077300115EA1 /* Post.swift in Sources */,
+				096040EC1BE15F2400E527DC /* Pagination.swift in Sources */,
 				0970AEE81B93077300115EA1 /* Credentials.swift in Sources */,
 				09678A0F1B81428400BCC16F /* GhostAPI.swift in Sources */,
 			);
@@ -292,6 +296,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GhostAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -309,6 +317,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GhostAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

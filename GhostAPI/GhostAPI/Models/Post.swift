@@ -25,11 +25,8 @@ public struct Post: JSONArrayConvertible {
         self.tags = tags
     }
     
-    public static let jsonArrayRootKey = "posts"
+    public static let itemsKey: String? = "posts"
 }
-
-public typealias Posts = JSONArrayOf<Post>
-
 
 //MARK: JSONDecodable
 extension Post {

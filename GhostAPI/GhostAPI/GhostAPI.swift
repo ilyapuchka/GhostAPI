@@ -107,11 +107,11 @@ public struct PostsRequestOptions {
         case All = "all", Static = "true", NotStatic = "false"
     }
     
-    public let pagination: PaginationOf<Post>?
+    public let pagination: PaginatedPosts?
     public let status: StatusFilter
     public let includeStatic: StaticFilter
     
-    public init(status: StatusFilter = .All, includeStatic: StaticFilter = .All, pagination: PaginationOf<Post>? = nil) {
+    public init(status: StatusFilter = .All, includeStatic: StaticFilter = .All, pagination: PaginatedPosts? = nil) {
         self.pagination = pagination
         self.status = status
         self.includeStatic = includeStatic
@@ -123,7 +123,7 @@ public struct PostsRequestOptions {
             "staticPages": includeStatic.rawValue,
             "include": "tags"
         ]
-        if let pagination = pagination {
+        if let pagination = pagination?.metadata {
             query["page"] = "\(pagination.page)"
             query["limit"] = pagination.limit > 0 ? "\(pagination.limit)": "all"
         }
@@ -132,10 +132,15 @@ public struct PostsRequestOptions {
     
 }
 
+public typealias Posts = JSONArrayOf<Post>
+public typealias PaginatedPosts = PostsPagination
+public typealias PostsAPIResponse = APIResponseOf<PaginatedPosts>
+public typealias PostsAPIRequest = APIRequestFor<PaginatedPosts>
+
 extension APIClient {
 
-    public func posts(options: PostsRequestOptions = PostsRequestOptions(pagination: PaginationOf<Post>(page: 1, limit: 15)), completion: APIResponseOf<PaginationOf<Post>> -> Void) -> APIRequestTask {
-        let apiRequest = APIRequestFor<PaginationOf<Post>>(endpoint: PostsEndpoint.GetPosts, baseURL: baseURL, query: options.query)
+    public func posts(options: PostsRequestOptions = PostsRequestOptions(pagination: PaginatedPosts(page: 1, limit: 15)), completion: PostsAPIResponse -> Void) -> APIRequestTask {
+        let apiRequest = PostsAPIRequest(endpoint: PostsEndpoint.GetPosts, baseURL: baseURL, query: options.query)
         return request(apiRequest, completion: completion)
     }
     
@@ -179,10 +184,14 @@ public enum TagsEndpoint: Endpoint {
     }
 }
 
+public typealias PaginatedTags = TagsPagination
+public typealias TagsAPIResponse = APIResponseOf<PaginatedTags>
+public typealias TagsAPIRequest = APIRequestFor<PaginatedTags>
+
 extension APIClient {
     
-    public func tags(completion: APIResponseOf<Tags> -> Void) -> APIRequestTask {
-        let apiRequest = APIRequestFor<Tags>(endpoint: TagsEndpoint.GetTags, baseURL: baseURL)
+    public func tags(completion: TagsAPIResponse -> Void) -> APIRequestTask {
+        let apiRequest = TagsAPIRequest(endpoint: TagsEndpoint.GetTags, baseURL: baseURL)
         return request(apiRequest, completion: completion)
     }
     
