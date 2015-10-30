@@ -33,25 +33,21 @@ public struct Tag: JSONConvertible {
 
 extension Tag {
     
-    struct Keys {
-        static private let id = "id"
-        static private let uuid = "uuid"
-        static private let name = "name"
-        static private let slug = "slug"
+    enum Keys: String {
+        case id, uuid, name, slug
     }
     
     public init?(jsonDictionary: JSONDictionary?) {
-        guard let jsonDictionary = jsonDictionary,
-            id = jsonDictionary[Keys.id].int,
-            uuid = jsonDictionary[Keys.uuid].string,
-            name = jsonDictionary[Keys.name].string,
-            slug = jsonDictionary[Keys.slug].string else {
-                return nil
+        guard let
+            json = JSONObject(jsonDictionary),
+            id = json[Keys.id.rawValue] as? Tag.Id,
+            uuid = json[Keys.uuid.rawValue] as? String,
+            name = json[Keys.name.rawValue] as? String,
+            slug = json[Keys.slug.rawValue] as? String
+        else {
+            return nil
         }
-        self.name = name
-        self.slug = slug
-        self.id = id
-        self.uuid = NSUUID(UUIDString: uuid)
+        self.init(id: id, uuid: NSUUID(UUIDString: uuid), name: name, slug: slug)
     }
 }
 
@@ -60,7 +56,7 @@ extension Tag {
 extension Tag {
     
     public var jsonDictionary: JSONDictionary {
-        return [Keys.name: name]
+        return [Keys.name.rawValue: name]
     }
     
 }

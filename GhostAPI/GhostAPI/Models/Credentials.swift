@@ -54,18 +54,18 @@ public struct RefreshTokenCredentials: JSONEncodable, APIRequestDataEncodable {
 
 extension RefreshTokenCredentials {
     
-    struct Keys {
-        static let refreshToken = "refresh_token"
-        static let grantType = "grant_type"
-        static let clientId = "client_id"
+    enum Keys: String {
+        case refreshToken = "refresh_token"
+        case grantType = "grant_type"
+        case clientId = "client_id"
     }
 
     public var jsonDictionary: JSONDictionary {
         get {
             return [
-                Keys.refreshToken: refreshToken,
-                Keys.grantType: grant_type,
-                Keys.clientId: clientId
+                Keys.refreshToken.rawValue: refreshToken,
+                Keys.grantType.rawValue: grant_type,
+                Keys.clientId.rawValue: clientId
             ]
         }
     }

@@ -30,15 +30,21 @@ public struct Post: JSONArrayConvertible {
 
 //MARK: JSONDecodable
 extension Post {
+
+    enum Keys: String {
+        case id, title, markdown, tags
+    }
+
     public init?(jsonDictionary: JSONDictionary?) {
         guard let
-            jsonDictionary = jsonDictionary,
-            id = jsonDictionary[Keys.id].int,
-            title = jsonDictionary[Keys.title].string,
-            markdown = jsonDictionary[Keys.markdown].string,
-            tags = jsonDictionary[Keys.tags].array?.flatMap({Tag(jsonDictionary: $0)}) else {
-                return nil
+            json = JSONObject(jsonDictionary),
+            id = json[Keys.id.rawValue] as? Int,
+            title = json[Keys.title.rawValue] as? String,
+            markdown = json[Keys.markdown.rawValue] as? String
+        else {
+            return nil
         }
+        let tags = json[Keys.tags.rawValue] as? [Tag] ?? []
         self.init(title: title, markdown: markdown, tags: tags)
         self.id = id
     }
@@ -49,16 +55,13 @@ extension Post {
 
 extension Post {
     
-    struct Keys {
-        static private let id = "id"
-        static private let title = "title"
-        static private let markdown = "markdown"
-        static private let tags = "tags"
-    }
-    
     public var jsonDictionary: JSONDictionary {
         get {
-            return [Keys.title: title, Keys.markdown: markdown, Keys.tags: tags.map({$0.jsonDictionary})]
+            return [
+                Keys.title.rawValue: title,
+                Keys.markdown.rawValue: markdown,
+                Keys.tags.rawValue: tags.map({$0.jsonDictionary})
+            ]
         }
     }
 }
