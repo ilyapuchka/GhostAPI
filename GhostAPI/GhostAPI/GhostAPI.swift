@@ -48,7 +48,7 @@ extension APIClient  {
     public func login(emailCredentials: EmailCredentials, completion: (APIResponseOf<AccessToken>) -> ()) throws -> APIRequestTask {
         let headers = [HTTPHeader.ContentType(HTTPContentType.form), HTTPHeader.Accept([HTTPContentType.JSON])]
         let apiRequest = try APIRequestFor<AccessToken>(endpoint: AuthEndpoint.Token, baseURL: baseURL, input: emailCredentials, headers: headers)
-        return request(apiRequest, completion: completion)
+        return ghostAPIRequest(apiRequest, completion: completion)
     }
     
 }
@@ -141,27 +141,27 @@ extension APIClient {
 
     public func posts(options: PostsRequestOptions = PostsRequestOptions(pagination: PaginatedPosts(page: 1, limit: 15)), completion: PostsAPIResponse -> Void) -> APIRequestTask {
         let apiRequest = PostsAPIRequest(endpoint: PostsEndpoint.GetPosts, baseURL: baseURL, query: options.query)
-        return request(apiRequest, completion: completion)
+        return ghostAPIRequest(apiRequest, completion: completion)
     }
     
     public func postWithId(id: Post.Id, options: PostsRequestOptions = PostsRequestOptions(), completion: APIResponseOf<Posts> -> Void) -> APIRequestTask {
         let apiRequest = APIRequestFor<Posts>(endpoint: PostsEndpoint.GetPost(id), baseURL: baseURL, query: options.query)
-        return request(apiRequest, completion: completion)
+        return ghostAPIRequest(apiRequest, completion: completion)
     }
     
     public func addPost(post: Post, completion: APIResponseOf<Posts> -> Void) throws -> APIRequestTask {
         let apiRequest = try APIRequestFor<Posts>(endpoint: PostsEndpoint.AddPost, baseURL: baseURL, input: Posts([post]), query: PostsRequestOptions().query)
-        return request(apiRequest, completion: completion)
+        return ghostAPIRequest(apiRequest, completion: completion)
     }
     
     public func deletePost(post: Post, completion: APIResponseOf<Posts> -> Void) -> APIRequestTask {
         let apiRequest = APIRequestFor<Posts>(endpoint: PostsEndpoint.DeletePost(post.id!), baseURL: baseURL, query: PostsRequestOptions().query)
-        return request(apiRequest, completion: completion)
+        return ghostAPIRequest(apiRequest, completion: completion)
     }
     
     public func updatePost(post: Post, completion: APIResponseOf<Posts> -> Void) throws -> APIRequestTask {
         let apiRequest = try APIRequestFor<Posts>(endpoint: PostsEndpoint.UpdatePost(post.id!), baseURL: baseURL, input: Posts([post]), query: PostsRequestOptions().query)
-        return request(apiRequest, completion: completion)
+        return ghostAPIRequest(apiRequest, completion: completion)
 
     }
 }
@@ -192,7 +192,7 @@ extension APIClient {
     
     public func tags(completion: TagsAPIResponse -> Void) -> APIRequestTask {
         let apiRequest = TagsAPIRequest(endpoint: TagsEndpoint.GetTags, baseURL: baseURL)
-        return request(apiRequest, completion: completion)
+        return ghostAPIRequest(apiRequest, completion: completion)
     }
     
 }
@@ -236,9 +236,42 @@ extension APIClient {
         let boundary = "ghost"
         let body = NSData(multipartDataWithItems: [item], boundary: boundary)
         let apiRequest = APIRequestFor<String>(endpoint: UploadEndpoint.Uploads, baseURL: baseURL, body: body, headers: [HTTPHeader.ContentType(HTTPContentType.multipart(boundary))])
-        return request(apiRequest, completion: completion)
+        return ghostAPIRequest(apiRequest, completion: completion)
     }
     
+}
+
+public struct GhostAPIError: ErrorType {
+    
+    public let message: String
+    public let errorType: String
+    
+    init?(error: NSError) {
+        guard let
+            response    = error.userInfo["response"].Object,
+            error       = response["errors"].Array?.first.Object,
+            message     = error["message"].String,
+            errorType   = error["errorType"].String
+            else { return nil }
+        
+        self.message = message
+        self.errorType = errorType
+    }
+    
+}
+
+extension APIResponseOf {
+    private var ghostAPIResponse: APIResponseOf {
+        return flatMapError { GhostAPIError(error: $0 as NSError) }
+    }
+}
+
+extension APIClient {
+    
+    private func ghostAPIRequest<ResultType>(request: SwiftNetworking.APIRequestFor<ResultType>, completion: SwiftNetworking.APIResponseOf<ResultType> -> Void) -> SwiftNetworking.APIRequestTask {
+        return self.request(request) { completion($0.ghostAPIResponse) }
+    }
+
 }
 
 
